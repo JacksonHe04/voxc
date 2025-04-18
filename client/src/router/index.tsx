@@ -1,11 +1,30 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '@/App'
-import BasicLayout from '@/pages/layouts/BasicLayout'
-import AdminLayout from '@/pages/layouts/AdminLayout'
-import Home from '@/pages/home'
-import About from '@/pages/about'
-import Dashboard from '@/pages/admin/dashboard'
-import UserManagement from '@/pages/admin/users'
+import BasicLayout from '@/pages/layout/BasicLayout'
+// basic
+import Home from '@/pages/basic/home'
+import Login from '@/pages/basic/login'
+import Signup from '@/pages/basic/signup'
+import Ranking from '@/pages/basic/ranking'
+import Result from '@/pages/basic/result'
+import About from '@/pages/basic/about'
+
+// music
+import Album from '@/pages/music/album'
+import Song from '@/pages/music/song'
+import Artist from '@/pages/music/artist'
+
+// user
+import Me from '@/pages/user/me'
+import Collection from '@/pages/user/collection'
+import Rated from '@/pages/user/rated'
+import Setting from '@/pages/user/setting'
+import Follow from '@/pages/user/follow'
+
+// community
+import Issues from '@/pages/community/issues'
+import Vote from '@/pages/community/vote'
+import Playground from '@/pages/community/playground'
 
 const router = createBrowserRouter([
   {
@@ -13,33 +32,78 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        element: <BasicLayout />,
+        // element: <BasicLayout />,
         children: [
           {
             path: '/',
-            element: <Home />,
+            element: <BasicLayout><Home /></BasicLayout>
           },
           {
             path: '/about',
             element: <About />,
           },
-        ]
-      },
-      // 可以添加其他不使用 BasicLayout 的路由
-      {
-        path: '/admin',
-        element: <AdminLayout />,
-        children: [
           {
-            path: '/admin/dashboard',
-            element: <Dashboard />
+            path: '/me',
+            element: <Me />,
           },
           {
-            path: '/admin/users',
-            element: <UserManagement />
-          }
+            path: '/login',
+            element: <Login />,
+          },
+          {
+            path: '/signup',
+            element: <Signup />,
+          },
+          {
+            path: '/setting',
+            element: <Setting />,
+          },
+          {
+            path: '/collection',
+            element: <Collection />,
+          },
+          {
+            path: '/rated',
+            element: <Rated />,
+          },
+          {
+            path: '/ranking',
+            element: <Ranking />,
+          },
+          {
+            path: '/result',
+            element: <Result />,
+          },
+          {
+            path: '/issues',
+            element: <Issues />,
+          },
+          {
+            path: '/playground',
+            element: <Playground />,
+          },
+          {
+            path: '/vote',
+            element: <Vote />,
+          },
+          {
+            path: '/album',
+            element: <Album />,
+          },
+          {
+            path: '/artist',
+            element: <Artist />,
+          },
+          {
+            path: '/song',
+            element: <Song />,
+          },
+          {
+            path: '/follow',
+            element: <Follow />,
+          },
         ]
-      }
+      },
     ],
   },
 ])

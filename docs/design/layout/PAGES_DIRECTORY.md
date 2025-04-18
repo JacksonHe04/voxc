@@ -1,0 +1,22 @@
+# 目录结构
+- basic
+  - about
+  - home
+  - login
+  - ranking
+  - result
+  - signup
+- community
+  - issues
+  - playground
+  - vote
+- music
+  - album
+  - artist
+  - song
+- user
+  - collection
+  - me
+  - setting
+  - follow
+  - rated
