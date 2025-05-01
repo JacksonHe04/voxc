@@ -10,9 +10,15 @@ import Result from '@/pages/basic/result'
 import About from '@/pages/basic/about'
 
 // music
-import Album from '@/pages/music/album'
-import Song from '@/pages/music/song'
-import Artist from '@/pages/music/artist'
+import Albums from '@/pages/music/albums'
+import Songs from '@/pages/music/songs'
+import Artists from '@/pages/music/artists'
+
+// rate
+import Rate from '@/pages/rate'
+import Album from '@/pages/rate/album'
+import Song from '@/pages/rate/song'
+import Artist from '@/pages/rate/artist'
 
 // user
 import Me from '@/pages/user/me'
@@ -94,20 +100,39 @@ const router = createBrowserRouter([
             element: <Vote />,
           },
           {
-            path: '/album',
-            element: <Album />,
+            path: '/albums',
+            element: <Albums />,
           },
           {
-            path: '/artist',
-            element: <Artist />,
+            path: '/artists',
+            element: <Artists />,
           },
           {
-            path: '/song',
-            element: <Song />,
+            path: '/songs',
+            element: <Songs />,
           },
           {
             path: '/follow',
             element: <Follow />,
+          },
+          // rate
+          {
+            path: '/rate',
+            element: <Rate />,
+            children: [
+              {
+                path: '/rate/album',
+                element: <Album />,
+              },
+              {
+                path: '/rate/song',
+                element: <Song />,
+              },
+              {
+                path: '/rate/artist',
+                element: <Artist />,
+              },
+            ]
           },
         ]
       },

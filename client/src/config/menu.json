@@ -28,15 +28,15 @@
       "label": "音乐",
       "children": [
         {
-          "key": "album",
+          "key": "albums",
           "label": "专辑"
         },
         {
-          "key": "song",
+          "key": "songs",
           "label": "单曲"
         },
         {
-          "key": "artist",
+          "key": "artists",
           "label": "艺术家"
         }
       ]
