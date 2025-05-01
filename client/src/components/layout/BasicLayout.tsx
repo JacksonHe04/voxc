@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout, Menu, Input, Avatar, Dropdown, Button, Space } from 'antd';
+import { useNavigate, Outlet } from 'react-router-dom';
 import {
   UserOutlined,
   SearchOutlined,
@@ -13,32 +14,37 @@ import menuConfig from '@/config/menu.json';
 
 const { Header, Sider, Content } = Layout;
 
-const BasicLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const BasicLayout: React.FC = () => {
+  const navigate = useNavigate();
+  
   // 侧边栏是否收起
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
 
   // 处理菜单配置和用户菜单配置，添加图标组件
   const siderMenuItems = processMenuItems(menuConfig.siderMenu);
   const userMenuItems = processMenuItems(menuConfig.userMenu);
 
+  // 处理菜单点击事件
+  const handleMenuClick = ({ key }: { key: string }) => {
+    navigate(`/${key}`);
+  };
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       {/* 侧边栏 */}
       <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={setCollapsed}
         width={200}
         className="bg-white"
       >
         <div className="h-16 flex items-center justify-center">
-          <span className="text-lg font-bold">{collapsed ? 'L' : 'Logo'}</span>
+          <span className="text-lg font-bold">VoxC</span>
         </div>
         <Menu
           mode="inline"
           defaultSelectedKeys={['home']}
           defaultOpenKeys={['my', 'music', 'community']}
           items={siderMenuItems}
+          onClick={handleMenuClick}
         />
       </Sider>
 
@@ -73,10 +79,7 @@ const BasicLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
         {/* 内容区域 */}
         <Content className="m-4 p-8 bg-white">
-          <div className="bg-red-500 h-96">
-            <h2>Content</h2>
-          </div>
-          {children}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

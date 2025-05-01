@@ -32,11 +32,18 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        // element: <BasicLayout />,
+        element: <BasicLayout/>,
         children: [
           {
             path: '/',
-            element: <BasicLayout><Home /></BasicLayout>
+            // 重定向到/home
+            loader: () => {
+              return window.location.replace('/home')
+            },
+          },
+          {
+            path: '/home',
+            element: <Home />
           },
           {
             path: '/about',
